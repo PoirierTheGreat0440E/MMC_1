@@ -1,0 +1,47 @@
+@font-face {
+    font-family: Roboto;
+    src: url("../../roboto/Roboto-Medium.ttf");
+}
+
+.message_form{
+    background-color:rgba(0,0,0,0.5);
+}
+
+.zone1{
+    width:50%;
+    background-color:rgba(0,0,0,0.5);
+    color:grey;
+    padding:5px;
+    height:250px;
+    display:flex;
+    flex-direction: column;
+    align-items: center ;
+}
+
+.zone1 textarea{
+    background-color:rgba(0,0,0,0.5);
+    border:1px white solid;
+    color:white;
+    width:90%;
+    resize:none;
+    height:130px;
+    font-size: 18px;
+    font-family: Roboto;
+}
+
+.zone1 input{
+    width:90%;
+    margin-top:10px;
+}
+
+.message_submit{
+    font-size:23px;
+    background-color:darkblue;
+    color:white;
+}
+
+.message_submit:hover{
+    font-size:23px;
+    background-color: blue;
+    color:white;
+}

@@ -1,0 +1,28 @@
+@font-face {
+    font-family: Roboto;
+    src: url("../../roboto/Roboto-Medium.ttf");
+}
+
+.message_list{
+    height:800px;
+    padding:5px;
+    overflow:auto;
+    direction:rtl;
+    background-color: rgb(48, 47, 47);
+}
+
+.topic_space{
+    padding:5px;
+    font-size:20px;
+    color:white;
+    border-radius: 10px;
+    background-color:rgb(75,75,75);
+    direction:ltr;
+}
+
+.message{
+    direction:ltr;
+    color:whitesmoke;
+    border-bottom:1px rgb(73, 73, 73) solid;
+    margin-top:10px;
+}

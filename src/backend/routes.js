@@ -37,14 +37,37 @@ function insertion_message(connection,contenu_message){
     });
 }
 
+// Sous-fonction pour lire tous les topics
+function lecture_topic(connection){
+    /*
+    connection.query("SELECT * FROM mmc_ver1_topic",function(error,results,fields){
+        if (error){
+            throw error;
+        }
+        let array_final = [];
+        let i = 0;
+        while ( results[i] != undefined ){
+            let id = results[i].topic_id;
+            let titre = results[i].topic_titre;
+            array_final[i] = { topic_id : id , topic_titre : titre };
+            i++;
+        }
+        return array_final;
+    });
+    */
+}
+
 let connection = connection_bdd("mmc_ver1");
 connection.connect();
 console.log("Connection à MySQL réussie !");
 
 //insertion_topic(connection,"aaarrgh!");
 //insertion_message(connection,"Bonjour ceci est un message hihi !");
+//lecture_topic(connection);
 
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/messages",function(req,res,next){
     console.log("Requete GET détectée !");
@@ -55,5 +78,18 @@ app.post("/messages",function(req,res,next){
     console.log("Requete POST détectée !");
     res.end();
 });
+
+// Pour l'instant on ne peut que get les topics du site web...
+app.get("/topic",function(req,res,next){
+
+    connection.query("SELECT * FROM mmc_ver1_topic",function(error,results,fields){
+        if (error){
+            throw error;
+        }
+        res.send(results);
+        res.end();
+    });
+
+})
 
 app.listen(port,()=>{console.log(`Le serveur écoute au port ${port} !`);});

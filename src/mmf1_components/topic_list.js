@@ -1,4 +1,4 @@
-import {React,useState,useEffect} from 'react';
+import {React} from 'react';
 import '../mmf1_styling/topic_list.css';
 import '../mmf1_styling/styling_general.css';
 
@@ -8,17 +8,13 @@ function Topic({topic_name,topic_changer}){
     </article>);
 }
 
-function TopicList({selected_topic ,topic_identifier}){
-
-    //const [chosen_topic,setChosenTopic] = useState("NO TOPIC SELECTED");
-    //useEffect( ()=>{console.log(chosen_topic);} , [chosen_topic] );
+function TopicList({topic_list,selected_topic ,topic_identifier}){
 
     return(<div className="topic_list">
         <p className='instruction_mini'>Select a topic to start chatting !</p>
-        <Topic topic_name={"First topic"} topic_changer={topic_identifier}/>
-        <Topic topic_name={"Second topic"} topic_changer={topic_identifier}/>
-        <Topic topic_name={"Third topic"} topic_changer={topic_identifier}/>
+        {topic_list.map( (topic) => <Topic key={topic.topic_id} topic_name={topic.topic_titre} topic_changer={topic_identifier} /> )}
     </div>);
+
 }
 
 export default TopicList;

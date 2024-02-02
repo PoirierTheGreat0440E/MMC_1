@@ -8,12 +8,12 @@ function Message({message_content}){
     </article>)
 }
 
-function MessageList({selected_topic}){
+function MessageList({message_list,selected_topic}){
     return(<div className='message_list'>
         <div className='topic_space'>
             <p>{selected_topic}</p>
         </div>
-        <Message message_content={"Premier message"}/>
+        {message_list.map( (message) => <Message key={message.message_id} message_content={message.message_contenu}/>  )}
     </div>);
 }
 

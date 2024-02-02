@@ -70,13 +70,29 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/messages",function(req,res,next){
-    console.log("Requete GET détectée !");
-    res.end();
+    //console.log("Requete GET détectée !");
+    //console.log(`ID donné : ${req.query.id_topic}`);
+    //console.log(typeof(req.query.id_topic));
+    let id_cherche = Number(req.query.id_topic);
+    connection.query('SELECT * FROM mmc_ver1_messages WHERE message_topic_id = ?',[id_cherche],function(error,results,fields){
+        if (error){
+            throw error;
+        }
+        res.send(results);
+        res.end();
+    });
 });
 
 app.post("/messages",function(req,res,next){
-    console.log("Requete POST détectée !");
-    res.end();
+    //console.log("Requete POST détectée !");
+    //console.log(req.body.message_content);
+    //console.log(req.body.id);
+    connection.query('INSERT INTO mmc_ver1_messages (message_contenu,message_topic_id) VALUES (?,?)',[req.body.message_content,req.body.id],function(error,results,fields){
+        if (error){
+            throw error;
+        }
+        res.end();
+    });
 });
 
 // Pour l'instant on ne peut que get les topics du site web...
